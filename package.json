@@ -1,0 +1,21 @@
+{
+  "name": "yash-portfolio",
+  "version": "1.0.0",
+  "description": "Yash Kumar Portfolio with Google Auth",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.100.1",
+    "cookie-session": "^2.1.1",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}

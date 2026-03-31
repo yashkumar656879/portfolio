@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Yash.AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.v3.css">
+</head>
+<body class="page-body">
+    <header id="header" class="scrolled">
+        <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">YASH.AI</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="profile.html" class="nav-active" id="nav-profile">My Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="reveal" style="padding-top: 8rem; max-width: 800px; margin: 0 auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 class="section-title" style="margin-bottom: 0;">My Profile</h2>
+                <a href="/api/logout" style="color: var(--text-muted); text-decoration: underline;">Log out</a>
+            </div>
+            
+            <div class="glass card" id="profile-card" style="display: none; padding: 3rem;">
+                <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 2rem;">
+                    <img id="profile-avatar" src="" alt="Avatar" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                    <div>
+                        <h3 id="profile-name" style="font-size: 1.8rem; margin-bottom: 0.25rem;">Loading...</h3>
+                        <p id="profile-email" style="color: var(--text-muted);"></p>
+                    </div>
+                </div>
+
+                <form id="profile-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                        <div>
+                            <label style="display: block; color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">Username</label>
+                            <input type="text" id="input-username" placeholder="Choose a username" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-family: inherit;">
+                        </div>
+                        <div>
+                            <label style="display: block; color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">City</label>
+                            <input type="text" id="input-city" placeholder="e.g. Mumbai, New York" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-family: inherit;">
+                        </div>
+                    </div>
+                    <div id="form-message" style="margin-bottom: 1rem; font-size: 0.9rem;"></div>
+                    <button type="submit" class="cta-btn" style="border: none; cursor: pointer;">Save Changes</button>
+                </form>
+            </div>
+            <div id="loading-spinner" style="text-align: center; padding: 4rem;">Loading profile data...</div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const res = await fetch('/api/me');
+                const data = await res.json();
+                
+                if (!data.authenticated) {
+                    window.location.href = '/login.html';
+                    return;
+                }
+
+                document.getElementById('loading-spinner').style.display = 'none';
+                document.getElementById('profile-card').style.display = 'block';
+
+                const u = data.user;
+                document.getElementById('profile-avatar').src = u.avatar || 'yash.jpg';
+                document.getElementById('profile-name').textContent = u.name;
+                document.getElementById('profile-email').textContent = u.email;
+                document.getElementById('input-username').value = u.username || '';
+                document.getElementById('input-city').value = u.city || '';
+
+            } catch (err) {
+                console.error('Failed to load profile');
+                document.getElementById('loading-spinner').textContent = 'Error loading profile. Please try refreshing.';
+            }
+        });
+
+        document.getElementById('profile-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const msgEl = document.getElementById('form-message');
+            msgEl.textContent = 'Saving...';
+            msgEl.style.color = 'var(--text-muted)';
+            
+            const username = document.getElementById('input-username').value;
+            const city = document.getElementById('input-city').value;
+
+            try {
+                const res = await fetch('/api/profile', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, city })
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    msgEl.textContent = 'Profile updated successfully!';
+                    msgEl.style.color = '#00f2fe';
+                } else {
+                    msgEl.textContent = data.error || 'Failed to update';
+                    msgEl.style.color = '#ff4d4d';
+                }
+            } catch (err) {
+                msgEl.textContent = 'Network error';
+                msgEl.style.color = '#ff4d4d';
+            }
+        });
+    </script>
+</body>
+</html>

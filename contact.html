@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Kumar | Contact — Let's Build Together</title>
+    <meta name="description" content="Get in touch with Yash Kumar for web development, AI automation, or any freelance project. Respond within 24 hours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.v3.css">
+</head>
+<body class="page-body">
+
+    <header id="header" class="scrolled">
+        <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">YASH.AI</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html" class="nav-active">Contact</a></li>
+                <li><a href="login.html" class="auth-nav-link" style="border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 5px;">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <!-- Page Hero -->
+        <section class="page-hero reveal">
+            <h1>Let's <span class="gradient-text">Connect</span></h1>
+            <p>Have a project or idea? I'm always open to a conversation.</p>
+        </section>
+
+        <!-- Contact Layout -->
+        <section id="contact" class="reveal" style="padding-top: 0;">
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start;">
+
+                <!-- Left: Contact Info -->
+                <div>
+                    <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Get In Touch</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.8;">Whether you have a full brief or just a rough idea, feel free to reach out. I typically respond within 24 hours and am always happy to discuss how I can help you achieve your goals.</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="glass card" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem;">
+                            <i class="fas fa-envelope" style="font-size: 1.4rem; color: var(--primary); width: 30px; text-align: center;"></i>
+                            <div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem;">EMAIL</div>
+                                <a href="mailto:yashkumar@example.com" style="color: white; text-decoration: none; font-weight: 500;">yashkumar@example.com</a>
+                            </div>
+                        </div>
+                        <div class="glass card" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem;">
+                            <i class="fab fa-linkedin" style="font-size: 1.4rem; color: var(--primary); width: 30px; text-align: center;"></i>
+                            <div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem;">LINKEDIN</div>
+                                <a href="https://linkedin.com/in/yashkumar" target="_blank" style="color: white; text-decoration: none; font-weight: 500;">linkedin.com/in/yashkumar</a>
+                            </div>
+                        </div>
+                        <div class="glass card" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem;">
+                            <i class="fab fa-github" style="font-size: 1.4rem; color: var(--primary); width: 30px; text-align: center;"></i>
+                            <div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem;">GITHUB</div>
+                                <a href="https://github.com/yashkumar" target="_blank" style="color: white; text-decoration: none; font-weight: 500;">github.com/yashkumar</a>
+                            </div>
+                        </div>
+                        <div class="glass card" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem 1.5rem;">
+                            <i class="fas fa-map-marker-alt" style="font-size: 1.4rem; color: var(--primary); width: 30px; text-align: center;"></i>
+                            <div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem;">LOCATION</div>
+                                <span style="color: white; font-weight: 500;">India 🇮🇳 · Available Globally</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(0,242,254,0.05); border: 1px solid rgba(0,242,254,0.2); border-radius: 16px;">
+                        <div style="color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">⚡ Fast Response Guarantee</div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">I respond to all genuine project inquiries within 24 hours. No ghosting, no delays.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div>
+                    <form class="contact-form glass card" id="contactForm" style="padding: 2.5rem;">
+                        <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Send Me a Message</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <input type="text" id="contactName" placeholder="Your Name" required style="padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-family: inherit;">
+                            <input type="email" id="contactEmail" placeholder="Your Email" required style="padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-family: inherit;">
+                        </div>
+                        <select id="contactService" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-muted); font-family: inherit; font-size: 1rem; cursor: pointer; margin-top: 1rem;">
+                            <option style="background: #0a0a0c;" value="">What can I help you with?</option>
+                            <option style="background: #0a0a0c;" value="web">Web Development</option>
+                            <option style="background: #0a0a0c;" value="app">App Development</option>
+                            <option style="background: #0a0a0c;" value="ai-content">AI Content Creation</option>
+                            <option style="background: #0a0a0c;" value="ai-automation">AI Automation</option>
+                            <option style="background: #0a0a0c;" value="outreach">Outreach Strategy</option>
+                            <option style="background: #0a0a0c;" value="other">Something Else</option>
+                        </select>
+                        <input type="text" id="contactBudget" placeholder="Project Budget (Optional, e.g. ₹50,000 or $1,000)" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-family: inherit; margin-top: 1rem;">
+                        <textarea id="contactMessage" rows="6" placeholder="Tell me about your project — the more detail, the better!" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; font-family: inherit; resize: vertical; margin-top: 1rem;"></textarea>
+                        
+                        <div id="contactFormMessage" style="margin-top: 1rem; font-size: 0.95rem;"></div>
+                        
+                        <button type="submit" class="cta-btn" style="border: none; cursor: pointer; width: 100%; justify-content: center; font-size: 1rem; margin-top: 1rem;">Send Message <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="reveal" style="padding-top: 0;">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 800px;">
+                <div class="glass card">
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">How long does a typical project take?</h3>
+                    <p style="color: var(--text-muted);">It varies by scope. A simple website can be delivered in 1–2 weeks. A full e-commerce platform or AI pipeline typically takes 3–6 weeks. I always provide a clear timeline upfront.</p>
+                </div>
+                <div class="glass card">
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Do you work with international clients?</h3>
+                    <p style="color: var(--text-muted);">Absolutely. I work with clients globally and am comfortable with async communication across time zones. I accept payments in INR, USD, and other major currencies.</p>
+                </div>
+                <div class="glass card">
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">What is your payment structure?</h3>
+                    <p style="color: var(--text-muted);">I typically work on a 50% upfront, 50% on delivery model for fixed-scope projects. For long-term or retainer work, we can discuss a monthly arrangement.</p>
+                </div>
+                <div class="glass card">
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Do you offer post-delivery support?</h3>
+                    <p style="color: var(--text-muted);">Yes, I offer 30 days of free support after project delivery. Extended maintenance packages are also available on request.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Yash Kumar | AI Expert & Freelancer. Built with precision.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
