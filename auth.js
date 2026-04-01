@@ -2,11 +2,16 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const db = require('./db');
 
+console.log('--- AUTH STARTUP CHECK ---');
+console.log('GOOGLE_CLIENT_ID:', process.env.GOOGLE_CLIENT_ID ? 'EXISTS' : 'MISSING');
+console.log('SUPABASE_KEY:', process.env.SUPABASE_KEY ? 'EXISTS' : 'MISSING');
+console.log('--------------------------');
+
 passport.use(new GoogleStrategy(
   {
-    clientID:     process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL:  `${process.env.BASE_URL}/auth/google/callback`,
+    clientID:     process.env.GOOGLE_CLIENT_ID || 'missing_client_id_placeholder',
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'missing_client_secret_placeholder',
+    callbackURL:  '/auth/google/callback', // Relative URL is better for Vercel!
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
