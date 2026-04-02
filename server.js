@@ -15,6 +15,13 @@ app.use(cookieSession({
   maxAge: 7 * 24 * 60 * 60 * 1000 // 1 week
 }));
 
+// Polyfill required for Passport 0.6.0+ with cookie-session
+app.use((req, res, next) => {
+  if (req.session && !req.session.regenerate) req.session.regenerate = (cb) => cb();
+  if (req.session && !req.session.save) req.session.save = (cb) => cb();
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
