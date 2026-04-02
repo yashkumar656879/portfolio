@@ -12,6 +12,7 @@ passport.use(new GoogleStrategy(
     clientID:     process.env.GOOGLE_CLIENT_ID || 'missing_client_id_placeholder',
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'missing_client_secret_placeholder',
     callbackURL:  '/auth/google/callback', // Relative URL is better for Vercel!
+    proxy: true // Tells Passport to trust Vercel's reverse proxy for 'https'
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
