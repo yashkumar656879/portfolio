@@ -88,6 +88,16 @@ app.post('/api/contact', async (req, res) => {
 // --- Static File Serving ---
 app.use(express.static(__dirname));
 
+// --- Global Error Handler (Shows detailed crash logs in the browser) ---
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    message: 'We experienced an internal server error. Here are the details:',
+    error: err.message || err.toString(),
+    details: err.details || null,
+    stack: err.stack,
+  });
+});
+
 // Export for Vercel serverless integration
 module.exports = app;
 
