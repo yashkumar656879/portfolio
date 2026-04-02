@@ -122,15 +122,24 @@ if (contactForm) {
             const data = await res.json();
             
             if (res.ok && data.success) {
-                // Prepare Gmail compose link
                 const subject = encodeURIComponent(`Project Inquiry: ${payload.service || 'Freelance Work'}`);
                 const bodyText = `Hi Yash,\n\n${payload.message}\n\n---\nProject Budget: ${payload.budget || 'Not specified'}\n\nFrom: ${payload.name}\nEmail: ${payload.email}`;
-                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=yashkumar656879@gmail.com&su=${subject}&body=${encodeURIComponent(bodyText)}`;
                 
-                // Open Gmail in a new tab
-                window.open(gmailUrl, '_blank');
+                // Detect mobile devices
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-                msgEl.textContent = 'Opening Gmail...';
+                if (isMobile) {
+                    // Mobile seamlessly handles mailto: deeply linked apps
+                    const mailToUrl = `mailto:yashkumar656879@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+                    window.location.href = mailToUrl;
+                    msgEl.textContent = 'Opening your email app...';
+                } else {
+                    // Desktop can fall back to the empty Chrome tab, so force Gmail Web
+                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=yashkumar656879@gmail.com&su=${subject}&body=${encodeURIComponent(bodyText)}`;
+                    window.open(gmailUrl, '_blank');
+                    msgEl.textContent = 'Opening Gmail...';
+                }
+
                 msgEl.style.color = '#00f2fe';
                 contactForm.reset();
             } else {
