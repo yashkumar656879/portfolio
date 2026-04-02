@@ -122,7 +122,15 @@ if (contactForm) {
             const data = await res.json();
             
             if (res.ok && data.success) {
-                msgEl.textContent = 'Message sent successfully! Yash will get back to you within 24 hours.';
+                // Prepare mailto link
+                const subject = encodeURIComponent(`Project Inquiry: ${payload.service || 'Freelance Work'}`);
+                const bodyText = `Hi Yash,\n\n${payload.message}\n\n---\nProject Budget: ${payload.budget || 'Not specified'}\n\nFrom: ${payload.name}\nEmail: ${payload.email}`;
+                const mailToUrl = `mailto:yashkumar656879@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+                
+                // Open default email client
+                window.location.href = mailToUrl;
+
+                msgEl.textContent = 'Opening your email client...';
                 msgEl.style.color = '#00f2fe';
                 contactForm.reset();
             } else {
