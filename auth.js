@@ -24,6 +24,7 @@ passport.use(new GoogleStrategy(
       });
       return done(null, user);
     } catch (err) {
+      console.error('Database Error during OAuth:', err);
       return done(err, null);
     }
   }
