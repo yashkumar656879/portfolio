@@ -122,15 +122,15 @@ if (contactForm) {
             const data = await res.json();
             
             if (res.ok && data.success) {
-                // Prepare mailto link
+                // Prepare Gmail compose link
                 const subject = encodeURIComponent(`Project Inquiry: ${payload.service || 'Freelance Work'}`);
                 const bodyText = `Hi Yash,\n\n${payload.message}\n\n---\nProject Budget: ${payload.budget || 'Not specified'}\n\nFrom: ${payload.name}\nEmail: ${payload.email}`;
-                const mailToUrl = `mailto:yashkumar656879@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=yashkumar656879@gmail.com&su=${subject}&body=${encodeURIComponent(bodyText)}`;
                 
-                // Open default email client
-                window.location.href = mailToUrl;
+                // Open Gmail in a new tab
+                window.open(gmailUrl, '_blank');
 
-                msgEl.textContent = 'Opening your email client...';
+                msgEl.textContent = 'Opening Gmail...';
                 msgEl.style.color = '#00f2fe';
                 contactForm.reset();
             } else {
